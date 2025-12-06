@@ -1,6 +1,6 @@
-# detection phase
+#!/bin/bash
+export CUDA_VISIBLE_DEVICES=4
 
-# for humaneval
 task="humaneval"
 max_len=512
 batch_size=20
@@ -37,3 +37,6 @@ accelerate launch --num_processes=1 main.py \
     --load_generations_path $GENERATION_FILE_PATH \
     --outputs_dir OUTPUT_DIRECTORY \
     --sweet \
+    --gamma 0.25 \
+    --delta 3.0 \
+    --entropy_threshold 1.2
